@@ -1,0 +1,41 @@
+﻿<UserControl
+    x:Class="WinUI3_WebView2_Sample.Views.ListPage3"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="using:WinUI3_WebView2_Sample.Models"
+    xmlns:viewModels="using:WinUI3_WebView2_Sample.ViewModels"
+    xmlns:views="using:WinUI3_WebView2_Sample.Views"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    mc:Ignorable="d">
+
+    <UserControl.DataContext>
+        <viewModels:ListPage3ViewModel />
+    </UserControl.DataContext>
+
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <ListView
+            x:Name="WebListView"
+            Grid.Column="0"
+            ItemsSource="{Binding Items}"
+            SelectedItem="{Binding SelectedListItem, Mode=TwoWay}"
+            SelectionMode="Single">
+            <ListView.ItemTemplate>
+                <DataTemplate x:Key="WebListViewTemplate" x:DataType="models:ContentListItem">
+                    <Grid>
+                        <TextBlock Text="{x:Bind WebDescription}" />
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <views:WebViewUserControl3 Grid.Column="1" PreviewContent="{Binding PreviewContent}" />
+    </Grid>
+</UserControl>

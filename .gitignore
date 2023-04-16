@@ -50,3 +50,6 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+WinUI3_WebView2_Sample/bin/
+WinUI3_WebView2_Sample/obj/
